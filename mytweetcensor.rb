@@ -52,11 +52,11 @@ while true do
 
     next_lwt = 0
     client.user_timeline.each do |tweet|
-      p tweet
       tid = tweet.id
       if tid > last_watched_tid && is_socially_inappropriate(tweet)
+        p tweet
         black_list.push(tid)
-        alert_msg = "@null このツイートは" + next_rip_time + "に消去されます．"
+        alert_msg = "@null このツイートは" + next_rip_time.to_s + "に消去されます．"
         client.update(alert_msg, in_reply_to_status_id: tid)
       end
       next_lwt = tid > next_lwt ? tid : next_lwt
