@@ -1,9 +1,7 @@
 # 動作確認済環境
-```
-# ruby (2.3.1)
-## activesupport (5.1.3)
-## twitter (6.1.0)
-```
+- ruby (2.3.1)
+  - activesupport (5.1.3)
+  - twitter (6.1.0)
 
 # mytweetcensor.rb
 一定時間ごとに自分のつぶやきを取得し，社会的に不適切なツイートをチェック，定刻(デフォルトでは朝4時，1日ごと)に消去
