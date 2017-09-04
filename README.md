@@ -22,7 +22,13 @@ gem install twitter
 gem install activesupport
 ```
 ### 実行
-`ruby mytweetcensor.rb`
+```
+ruby mytweetcensor.rb
+```
+### バックグラウンドでの実行
+```
+nohup ruby mytweetcensor.rb >out.log 2>err.log </dev/null &
+```
 
 # mytweeteraser
 MAX\_TWEET\_IDより古いtweet\_idを持つツイートを全て消去する．Twitter公式にリクエストして得る全ツイート履歴の中の`tweets.csv`を使う．
@@ -34,6 +40,8 @@ MAX\_TWEET\_IDより古いtweet\_idを持つツイートを全て消去する．
 gem install twitter
 ```
 ### 実行
-`ruby mytweeteraser.rb`
+```
+ruby mytweeteraser.rb
+```
 
 注: `tweets.csv`と同じディレクトリで実行する．
