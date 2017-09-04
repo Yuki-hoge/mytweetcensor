@@ -27,6 +27,6 @@ MAX\_TWEET\_IDより古いtweet\_idを持つツイートを全て消去する．
 gem install twitter
 ```
 ### 実行
-`ruby mytweetcensor.rb`
+`ruby mytweeteraser.rb`
 
 注: `tweets.csv`と同じディレクトリで実行する．
