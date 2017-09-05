@@ -23,7 +23,7 @@ csv_data = CSV.read('tweets.csv', headers: true)
 ctr = 0
 csv_data.each do |tweet|
   tweet_id = (tweet['tweet_id']).to_i
-  if tweet_id < MAX_TWEET_ID
+  if tweet_id <= MAX_TWEET_ID
     ctr += 1
 
     printf("[%d]%d ", ctr, tweet_id)

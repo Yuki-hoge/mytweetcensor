@@ -30,7 +30,7 @@ ruby mytweetcensor.rb
 nohup ruby mytweetcensor.rb >out.log 2>err.log </dev/null &
 ```
 
-# mytweeteraser
+# mytweeteraser.rb
 MAX\_TWEET\_IDより古いtweet\_idを持つツイートを全て消去する．Twitter公式にリクエストして得る全ツイート履歴の中の`tweets.csv`を使う．
 ## つかいかた
 ### `credential_twitter.rb`を作成
@@ -38,6 +38,19 @@ MAX\_TWEET\_IDより古いtweet\_idを持つツイートを全て消去する．
 ### RubyGemをインストール(入ってれば省略)
 ```
 gem install twitter
+```
+### MAX\_TWEET\_IDの設定
+`mytweeteraser.rb`中の以下の部分を変更する．
+
+注: 消されるのは，MAX\_TWEET\_IDにセットされたIDのツイートを含む，それより過去の自分のツイート全て．
+```
+#! /usr/local/bin/ruby
+# -*- coding: utf-8 -*-
+
+require 'twitter'
+require 'csv'
+load File.expand_path("../credential_twitter.rb", __FILE__)
+MAX_TWEET_ID = 334334334 <= CHANGE HERE
 ```
 ### 実行
 ```

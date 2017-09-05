@@ -51,15 +51,20 @@ while true do
     # censoring
 
     next_lwt = 0
-    client.user_timeline.each do |tweet|
-      tid = tweet.id
-      if tid > last_watched_tid && is_socially_inappropriate(tweet)
-        p tweet
-        black_list.push(tid)
-        alert_msg = "@null このツイートは" + next_rip_time.to_s + "に消去されます．"
-        client.update(alert_msg, in_reply_to_status_id: tid)
+    begin
+      client.user_timeline.each do |tweet|
+        tid = tweet.id
+        if tid > last_watched_tid && is_socially_inappropriate(tweet)
+          p tweet
+          black_list.push(tid)
+          alert_msg = "@null このツイートは" + next_rip_time.to_s + "に消去されます．"
+          client.update(alert_msg, in_reply_to_status_id: tid)
+        end
+        next_lwt = tid > next_lwt ? tid : next_lwt
       end
-      next_lwt = tid > next_lwt ? tid : next_lwt
+    rescue => e
+      printf("FAIL: %s", e.message)
+      printf("\n")
     end
 
     last_watched_tid = next_lwt
