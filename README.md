@@ -3,15 +3,18 @@
 ## 免責事項
 間違って変なツイートを消してしまうかも．自分のツイートに未練がない人のみ使用．
 
+不適切な部分等あったらご連絡ください．
+
 # 動作確認済環境
 - ruby (2.3.1)
   - activesupport (5.1.3)
   - twitter (6.1.0)
+  - negapoji(0.1.0)
 
 # mytweetcensor.rb
 一定時間ごとに自分のつぶやきを取得し，社会的に不適切なツイートをチェック，定刻(デフォルトでは朝4時，1日ごと)に消去
 
-社会的に不適切なツイート: デフォルトでは@nullへのリプライとしている．（つまり現段階では，ツイート時に不適切であるという認識が必要）
+社会的に不適切なツイート: negapoji(https://github.com/hatt0519/negapoji)というRubyGemを使用して判定．
 ## つかいかた
 ### `credential_twitter.rb`を作成
 以下の形式のファイル`credential_twitter.rb`をスクリプトと同じディレクトリに作成．各値はTwitter Application Managementでアプリを作って取得．
@@ -25,6 +28,12 @@ ACCESS_TOKEN_SECRET = "YOUR ACCESS TOKEN SECRET"
 ```
 gem install twitter
 gem install activesupport
+```
+
+#### negapoji RubyGemのインストール
+negapojiというRubyGemを使用．インストールに当たっては以下を参照．
+```
+http://qiita.com/snumano/items/7b85b4f55eea966a65f1
 ```
 ### 実行
 ```
