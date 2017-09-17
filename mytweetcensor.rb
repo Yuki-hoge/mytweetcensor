@@ -4,6 +4,7 @@
 require 'twitter'
 require 'date'
 require 'active_support/all'
+require 'negapoji'
 load File.expand_path("../credential_twitter.rb", __FILE__)
 
 #==============================================
@@ -35,7 +36,12 @@ last_watched_tid = 0
 black_list = []
 
 def is_socially_inappropriate(tweet)
-  tweet.in_reply_to_screen_name == "null"
+  twtext = tweet.text
+  if twtext.is_a?(String)
+    Negapoji.judge(twtext) == "negative"
+  else
+    false
+  end
 end
 
 
@@ -46,6 +52,7 @@ now = Time.now
 next_rip_time = Time.new(now.year, now.month, now.day, RIP_HOUR)
 next_rip_time += RIP_INTERVAL
 
+# main loop
 while true do
   if Time.now < next_rip_time
     # censoring
