@@ -74,3 +74,7 @@ ruby mytweeteraser.rb
 ```
 
 注: `tweets.csv`と同じディレクトリで実行する．
+
+# TODO
+- Dockerで実行できるようにしたい
+    - そのためにcredentialを環境変数として受け渡すように
